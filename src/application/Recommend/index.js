@@ -1,9 +1,19 @@
 import React from 'react';
+import Slider from '../../components/slider/index';
 
-function Recommend (props) {
+function Recommend(props) {
+  //mock 数据
+  const bannerList = [1, 2, 3, 4].map((item,index) => {
+    return { 
+      imageUrl: "http://p1.music.126.net/ZYLJ2oZn74yUz5x8NBGkVA==/109951164331219056.jpg",
+      id: index
+    }
+  });
   return (
-    <div>Recommend</div>
+    <div>
+      <Slider bannerList={bannerList}></Slider>
+    </div>
   )
 }
 
-export default React.memo (Recommend);
+export default React.memo(Recommend);

@@ -22,7 +22,7 @@ export const Tab = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background: ${style ["theme-color"]};
+  background: ${style["theme-color"]};
   a {
     flex: 1;
     padding: 2px 0;
@@ -30,7 +30,7 @@ export const Tab = styled.div`
     color: #e4e4e4;
     font-size: 16px;
     span {
-      font-size: ${style ["font-size-l"]};
+      font-size: ${style["font-size-l"]};
     }
     &.selected {
       span {
