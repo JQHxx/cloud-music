@@ -5,16 +5,12 @@ import { SliderContainer } from './style';
 import 'swiper/dist/css/swiper.css';
 import Swiper from "swiper";
 
-
-
 function Slider(props) {
   // useState 通过在函数组件里调用它来给组件添加一些内部 state。
   // React 会在重复渲染时保留这个 state。
   // useState 会返回一对值：当前状态和一个让你更新它的函数，
   const [sliderSwiper, setSliderSwiper] = useState(null);  // [undefind, f()] 此处作用为置空
   const { bannerList } = props;  // 接收父级传过来的list参数
-
-  
   // useEffect （副作用函数）是一个 Effect Hook，给函数组件增加了操作副作用
   // (在 React 组件中进行数据获取、订阅或者手动修改 DOM等)的能力
   // 你可以通知 React 跳过对 effect 的调用，只要传递数组作为 useEffect 的第二个可选参数即可，
