@@ -50,6 +50,8 @@ ReactDOM.render(<Clock />, document.getElementById("root"));
 
 注意点：
 1、不能直接更改state。
+
+
 this.state.comment = "hello"; // wrong
 此时组件不会重新渲染。
 正确的写法是使用setState：this.setState({comment: 'Hello'});构造函数是唯一可以给 this.state 赋值的地方。
@@ -68,3 +70,26 @@ this.setState((state, props) => ({
 5、state完全受控于组件，除非拥有并设置了他的组件，否则其他组件是无法访问的。
 但是组件可以将state作为props传递到子组件中，但是子组件无法得知其是否来源父组件的state
 这种通常被称为“自上而下”或者是“单向”数据流.
+
+# hook
+
+1、Hook 是一些可以让你在函数组件里“钩入” React state 及生命周期等特性的函数。hook不能在class中使用。hook可以让我们在不编写class的时候使用state等react属性。
+
+例子：计数器，点击按钮数字会加一
+import React, { useState } from 'react';
+
+function Example() {
+  // 声明一个叫 “count” 的 state 变量。
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+
+useState 会返回一对值：当前状态和一个让你更新它的函数，你可以在事件处理函数中或其他一些地方调用这个函数。它类似 class 组件的 this.setState，但是它不会把新的 state 和旧的 state 进行合并。

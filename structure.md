@@ -8,6 +8,7 @@ src的目录结构
 ├─routes                // 路由配置文件
 └─store                 //redux 相关文件
   App.js                // 根组件
+  
   index.js              // 入口文件
   serviceWorker.js      // PWA 离线应用配置
   style.js              // 默认样式
