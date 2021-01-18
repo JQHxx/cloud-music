@@ -93,3 +93,72 @@ function Example() {
 }
 
 useState 会返回一对值：当前状态和一个让你更新它的函数，你可以在事件处理函数中或其他一些地方调用这个函数。它类似 class 组件的 this.setState，但是它不会把新的 state 和旧的 state 进行合并。
+
+# Effect Hook
+
+Effect Hook 可以让你在函数组件中执行副作用操作.
+
+import React, { useState, useEffect } from 'react';
+function Example() {
+  const [count, setCount] = useState(0);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+
+useEffect Hook可以看做是componentDidMount，componentDidUpdate 和 componentWillUnmount 这三个函数的组合。
+在react中，有两个常见的副作用操作：需要清除的和不需要清除的。
+
+1、无需清除的effect
+比如发送网络请求，手动变更DOM。记录日志。
+
+在class中我们需要在compontentDidMount和compontentDidUpdata连个生命周期中编写一样的代码来加载我们需要的效果。
+
+但是在hook中，我们只需要用useEffect包裹着之前的代码即可实现同样的效果。
+
+useEffect会在组件执行渲染之后保存传递的函数（我们称为effect），并且在执行DOM更新之后调用它。
+
+# 为什么使用useEffect？
+
+使用useEffect我们可以在组件中直接访问state。而且我们不需要特殊的API来读取它。
+useEffect会在第一次渲染和每次更新之后执行。
+
+# Hook规则
+
+1、只在最顶层使用Hook，不要在循环、条件或者嵌套函数中使用Hook。
+2、只在react中调用Hook，不要在普通的js函数中调用它。
+
+
+# 自定义hook类似vue中的组件，父子组件的调用，不在赘述
+
+# effect的条件执行
+
+默认情况下，effect会在每轮组件渲染完成后执行。一旦effect的依赖发生变化，它就会被重新创建。
+但是这样可以造成不必要的更新。比如订阅用户的在线状态，我们没必要在每次组件更新的时候都创建新的订阅，
+我们只需要在prop改变的时候重新创建即可。
+
+这样，我们就需要给useEffect传递第二个蚕食，他是effect所依赖的值数组。
+如下所示：
+
+useEffect(
+  () => {
+    const subscription = props.source.subscribe();
+    return () => {
+      subscription.unsubscribe();
+    };
+  },
+  [props.source],
+);
+这个时候，只有当props.source改变的时候才会重新创建订阅。
