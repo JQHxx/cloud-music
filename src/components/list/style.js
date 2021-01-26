@@ -1,4 +1,4 @@
-import styled from'styled-components';
+import styled from 'styled-components';
 import style from '../../assets/global-style';
 
 export const ListWrapper = styled.div`
@@ -29,7 +29,8 @@ export const ListItem = styled.div`
       width: 100%;
       height: 35px;
       border-radius: 3px;
-      background: linear-gradient (hsla (0,0%,43%,.4),hsla (0,0%,100%,0));
+      background: linear-gradient
+        (hsla (0, 0%, 43%, 0.4), hsla (0, 0%, 100%, 0));
     }
     position: relative;
     height: 0;
@@ -38,9 +39,9 @@ export const ListItem = styled.div`
       position: absolute;
       right: 2px;
       top: 2px;
-      font-size: ${style ["font-size-s"]};
+      font-size: ${style['font-size-s']};
       line-height: 15px;
-      color: ${style ["font-color-light"]};
+      color: ${style['font-color-light']};
       .play {
         vertical-align: top;
       }
@@ -53,13 +54,13 @@ export const ListItem = styled.div`
     }
   }
   .desc {
-      overflow: hidden;
-      margin-top: 2px;
-      padding: 0 2px;
-      height: 50px;
-      text-align: left;
-      font-size: ${style ["font-size-s"]};
-      line-height: 1.4;
-      color: ${style ["font-color-desc"]};
-    }
+    overflow: hidden;
+    margin-top: 2px;
+    padding: 0 2px;
+    height: 50px;
+    text-align: left;
+    font-size: ${style['font-size-s']};
+    line-height: 1.4;
+    color: ${style['font-color-desc']};
+  }
 `;
