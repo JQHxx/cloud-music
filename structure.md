@@ -11,3 +11,11 @@ src的目录结构
   index.js              // 入口文件
   serviceWorker.js      // PWA 离线应用配置
   style.js              // 默认样式
+
+
+store
+
+├─actionCreators        // 定义state
+├─constants             // 是指state的type
+├─reducer               // 更新store
+├─index                 // 可复用的 UI 组件

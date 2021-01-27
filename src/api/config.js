@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const baseUrl = 'http://xxx自己填';
+export const baseUrl = 'http://47.98.159.95/m-api';
 
 //axios 的实例及拦截器配置
 const axiosInstance = axios.create({

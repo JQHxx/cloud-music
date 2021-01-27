@@ -166,3 +166,34 @@ useEffect(
 注意：
 1、请确保数组中包含了所有外部作用域中会发生变化且在 effect 中使用的变量，否则你的代码会引用到先前渲染中的旧变量
 2、如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（[]）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。
+
+# 关于redux
+
+定义：redux是一个javascript的状态容器，类似于vuex。
+
+三大原则：
+1、同一数据源，所有的state都应该在一个object树上面，类似vuex的state
+2、state是只读的，改变state需要在action里面进行，这样子可以确保视图和请求都不能随意修改state
+vuex中使用dispatch和commit两种方法存储值
+其中dispatch含有异步操作，取值的时候需要使用getter，而commit是同步操作直接取值就行。（react中暂时不知区别。后续看到在更改）
+3、使用纯函数来执行修改。为了描述 action 如何改变 state tree ，你需要编写 reducers。
+
+
+# Action
+
+Action 是把数据从应用（这里之所以不叫 view 是因为这些数据有可能是服务器响应，用户输入或其它非 view 的数据 ）传到 store 的有效载荷。它是 store 数据的唯一来源。一般来说你会通过 store.dispatch() 将 action 传到 store。
+
+Action 本质上是 JavaScript 普通对象。我们约定，action 内必须使用一个字符串类型的 type 字段来表示将要执行的动作。多数情况下，type 会被定义成字符串常量。当应用规模越来越大时，建议使用单独的模块或文件来存放 action。
+
+# Reducer
+Reducers 指定了应用状态的变化如何响应 actions 并发送到 store 的，记住 actions 只是描述了有事情发生了这一事实，并没有描述应用如何更新 state。
+
+# Store
+store是联合reducers和action的对象。
+
+Store 有以下职责：
+1、维持应用的 state；
+2、提供 getState() 方法获取 state；
+3、提供 dispatch(action) 方法更新 state；
+4、通过 subscribe(listener) 注册监听器;
+5、通过 subscribe(listener) 返回的函数注销监听器。
