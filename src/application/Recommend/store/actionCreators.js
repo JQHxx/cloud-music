@@ -17,13 +17,16 @@ export const changeRecommendList = (data) => ({
 
 export const getBannerList = () => {
   return (dispatch) => {
-    getBannerRequest().then(data => {
-      dispatch(changeBannerList(data.banners));
-    }).catch(() => {
-      console.log('轮播图数据传输错误');
-    });
-  }
-}
+    getBannerRequest()
+      .then((data) => {
+        // 将获取到的banners传到上面的函数中暴露出去
+        dispatch(changeBannerList(data.banners));
+      })
+      .catch(() => {
+        console.log('轮播图数据传输错误');
+      });
+  };
+};
 
 export const getRecommendList = () => {
   return (dispatch) => {

@@ -7,9 +7,9 @@ const defaultState = fromJS({
   recommendList: [],
 });
 
-// 在 reducer.js 文件中加入以下处理逻辑，由于存放的是 immutable 数据结构，所以必须用 set 方法来设置新状态，同时取状态用 get 方法。
+// 在 reducer.js 文件中加入以下处理逻辑，由于存放的是 immutable 数据结构，
+// 所以必须用 set 方法来设置新状态，同时取状态用 get 方法。
 export default (state = defaultState, action) => {
-  console.log(state, action);
   switch (action.type) {
     case actionTypes.CHANGE_BANNER:
       return state.set('bannerList', action.data);

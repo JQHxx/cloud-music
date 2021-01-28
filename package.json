@@ -47,5 +47,6 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "proxy": "http://47.98.159.95/m-api"
 }

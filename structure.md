@@ -18,4 +18,4 @@ store
 ├─actionCreators        // 定义state
 ├─constants             // 是指state的type
 ├─reducer               // 更新store
-├─index                 // 可复用的 UI 组件
+├─index                 // export相关变量
