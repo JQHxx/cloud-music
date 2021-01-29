@@ -19,7 +19,7 @@ export const getBannerList = () => {
   return (dispatch) => {
     getBannerRequest()
       .then((data) => {
-        // 将获取到的banners传到上面的函数中暴露出去
+        // 将获取到的banners传到上面的函数中并通过export暴露出去
         dispatch(changeBannerList(data.banners));
       })
       .catch(() => {

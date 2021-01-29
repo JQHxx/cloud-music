@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import * as actionTypes from './store/actionCreators';
 
 function Recommend(props) {
+  // 这里的函数是在下面将redux的函数暴露出来的
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
   const { bannerList, recommendList } = props;
 
@@ -33,6 +34,7 @@ function Recommend(props) {
 const mapStateToProps = (state) => ({
   // 不要在这里将数据 toJS
   // 不然每次 diff 比对 props 的时候都是不一样的引用，还是导致不必要的重渲染，属于滥用 immutable
+  // redus中使用set和get存取数据
   bannerList: state.getIn(['recommend', 'bannerList']),
   recommendList: state.getIn(['recommend', 'recommendList']),
 });

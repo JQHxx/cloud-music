@@ -175,7 +175,7 @@ useEffect(
 1、同一数据源，所有的state都应该在一个object树上面，类似vuex的state
 2、state是只读的，改变state需要在action里面进行，这样子可以确保视图和请求都不能随意修改state
 vuex中使用dispatch和commit两种方法存储值
-其中dispatch含有异步操作，取值的时候需要使用getter，而commit是同步操作直接取值就行。（react中暂时不知区别。后续看到在更改）
+其中dispatch含有异步操作，取值的时候需要使用getter，而commit是同步操作直接取值就行。在vuex中dispatch可以调用action里面的函数。（react中暂时不知区别。后续看到在更改）
 3、使用纯函数来执行修改。为了描述 action 如何改变 state tree ，你需要编写 reducers。
 
 
