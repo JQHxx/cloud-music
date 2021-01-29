@@ -185,7 +185,6 @@ vuex中使用dispatch和commit两种方法存储值
 
 
 # Action
-
 Action 是把数据从应用（这里之所以不叫 view 是因为这些数据有可能是服务器响应，用户输入或其它非 view 的数据 ）传到 store 的有效载荷。它是 store 数据的唯一来源。一般来说你会通过 store.dispatch() 将 action 传到 store。
 
 Action 本质上是 JavaScript 普通对象。我们约定，action 内必须使用一个字符串类型的 type 字段来表示将要执行的动作。多数情况下，type 会被定义成字符串常量。当应用规模越来越大时，建议使用单独的模块或文件来存放 action。
@@ -195,7 +194,6 @@ Reducers 指定了应用状态的变化如何响应 actions 并发送到 store �
 
 # Store
 store是联合reducers和action的对象。
-
 Store 有以下职责：
 1、维持应用的 state；
 2、提供 getState() 方法获取 state；
@@ -205,3 +203,6 @@ Store 有以下职责：
 
 # immutable 数据结构中长度属性 size
 可以用来判断数据是否存在，可以用于提升性能，避免资源不必要的重复加载。
+
+# react forward ref的使用
+引用传递（Ref forwading）是一种通过组件向子组件自动传递 引用ref 的技术。对于应用者的大多数组件来说没什么作用。但是对于有些重复使用的组件，可能有用。例如某些input组件，需要控制其focus，本来是可以使用ref来控制，但是因为该input已被包裹在组件中，这时就需要使用Ref forward来透过组件获得该input的引用。
