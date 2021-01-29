@@ -29,6 +29,7 @@ export const Tab = styled.div`
     font-size: 14px;
     color: #e4e4e4;
     font-size: 16px;
+    z-index: 999;
     span {
       font-size: ${style["font-size-l"]};
     }

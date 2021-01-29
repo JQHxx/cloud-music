@@ -5,6 +5,7 @@ import { fromJS } from 'immutable'; // 这里用到 fromJS 把 JS 数据结构�
 const defaultState = fromJS({
   bannerList: [],
   recommendList: [],
+  enterLoading: true,
 });
 
 // 在 reducer.js 文件中加入以下处理逻辑，由于存放的是 immutable 数据结构，
@@ -15,6 +16,8 @@ export default (state = defaultState, action) => {
       return state.set('bannerList', action.data);
     case actionTypes.CHANGE_RECOMMEND_LIST:
       return state.set('recommendList', action.data);
+    case actionTypes.CHANGE_ENTER_LOADING:
+      return state.set('enterLoading', action.data);
     default:
       return state;
   }

@@ -6,21 +6,34 @@ import Scroll from '../../components/scroll/scroll.js';
 // 连接redux
 import { connect } from 'react-redux';
 import * as actionTypes from './store/actionCreators';
+// 关于图片懒加载
+import { forceCheck } from 'react-lazyload';
+// 加载动画
+import Loading from '../../components/loading/loading';
 
 function Recommend(props) {
   // 这里的函数是在下面将redux的函数暴露出来的
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
   const { bannerList, recommendList } = props;
-
+  const { enterLoading } = props;
   useEffect(() => {
-    getBannerDataDispatch();
-    getRecommendListDataDispatch();
-  }, []);
+    // 如果页面有数据，则不发请求
+    //immutable 数据结构中长度属性 size
+    if (!bannerList.size) {
+      getBannerDataDispatch();
+    }
+    if (!recommendList.size) {
+      getRecommendListDataDispatch();
+    }
+    // getBannerDataDispatch();
+    // getRecommendListDataDispatch();
+  }, []); // 仅在初始化的时候加载
   const bannerListJS = bannerList ? bannerList.toJS() : [];
   const recommendListJS = recommendList ? recommendList.toJS() : [];
   return (
     <Content>
-      <Scroll className="list">
+      {enterLoading ? <Loading></Loading> : null}
+      <Scroll className="list" onScroll={forceCheck}>
         <div>
           <Slider bannerList={bannerListJS}></Slider>
           <RecommendList recommendList={recommendListJS}></RecommendList>
@@ -37,6 +50,7 @@ const mapStateToProps = (state) => ({
   // redus中使用set和get存取数据
   bannerList: state.getIn(['recommend', 'bannerList']),
   recommendList: state.getIn(['recommend', 'recommendList']),
+  enterLoading: state.getIn(['recommend', 'enterLoading']),
 });
 
 // 映射 dispatch 到 props 上

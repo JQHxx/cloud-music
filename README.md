@@ -4,6 +4,11 @@
 
 以 React 全家桶 (包含 hooks) 以及 immutable 数据流为基础打造的一款高质量的移动端音乐类 WebApp 。
 
+# 接口
+
+采用 github 上开源的 NodeJS 版 api 接口 NeteaseCloudMusicApi，提供音乐数据。
+地址：https://github.com/Binaryify/NeteaseCloudMusicApi
+
 # 启动项目
 
 cd cloud-music
@@ -197,3 +202,6 @@ Store 有以下职责：
 3、提供 dispatch(action) 方法更新 state；
 4、通过 subscribe(listener) 注册监听器;
 5、通过 subscribe(listener) 返回的函数注销监听器。
+
+# immutable 数据结构中长度属性 size
+可以用来判断数据是否存在，可以用于提升性能，避免资源不必要的重复加载。

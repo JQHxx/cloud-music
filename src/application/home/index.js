@@ -1,6 +1,6 @@
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
-import { Top, Tab, TabItem } from './style';
+import { Top, Tab, TabItem, RouterItem } from './style';
 // 利用 NavLink 组件进行路由跳转
 import { NavLink } from 'react-router-dom';
 function Home(props) {
